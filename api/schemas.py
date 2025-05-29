@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel,ConfigDict
 from typing import Optional, List
 
 
@@ -10,8 +10,7 @@ class RatingBase(BaseModel):
     rating: float
     timestamp: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 class TagBase(BaseModel):
@@ -20,16 +19,14 @@ class TagBase(BaseModel):
     tag: str
     timestamp: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 class LinkBase(BaseModel):
     imdbId: Optional[str]
     tmdbId: Optional[int]
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 # --- Schéma principal pour Movie ---
@@ -38,8 +35,7 @@ class MovieBase(BaseModel):
     title: str
     genres: Optional[str] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 class MovieDetailed(MovieBase):
@@ -54,8 +50,7 @@ class MovieSimple(BaseModel):
     title: str
     genres: Optional[str]
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 # --- Pour les endpoints de /ratings et /tags si appelés seuls ---
@@ -65,8 +60,7 @@ class RatingSimple(BaseModel):
     rating: float
     timestamp: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 class TagSimple(BaseModel):
@@ -75,8 +69,7 @@ class TagSimple(BaseModel):
     tag: str
     timestamp: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 
 class LinkSimple(BaseModel):
@@ -84,8 +77,7 @@ class LinkSimple(BaseModel):
     imdbId: Optional[str]
     tmdbId: Optional[int]
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
 
 class AnalyticsResponse(BaseModel):
     movie_count: int
@@ -93,5 +85,4 @@ class AnalyticsResponse(BaseModel):
     tag_count: int
     link_count: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True) 
