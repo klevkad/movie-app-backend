@@ -15,3 +15,4 @@ for movie in movies:
 # %%
 # Fermer la session
 db.close()
+# %%
