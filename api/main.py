@@ -30,7 +30,7 @@ Tous les endpoints supportent la pagination (`skip`, `limit`) et des filtres opt
 app = FastAPI(
     title="MovieLens API",
     description = api_description,
-    version = "0.1"
+    version = "0.2"
 )
 
 # --- Dépendance pour la session de base de données ---
